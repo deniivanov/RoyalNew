@@ -1,6 +1,6 @@
 import sgMail from '@sendgrid/mail'
 import axios from 'axios'
-sgMail.setApiKey('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')
+sgMail.setApiKey(process.env.SENDGRID_API)
 
 
 const headers =  {'Content-Type': 'application/json'}
@@ -9,23 +9,24 @@ export default async function handler(req, res)
 
 {
    /*  console.log(req) */
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && req.url === '/api/contact-us') {
         console.log(req)
-        /* const client = {
+        const client = {
             to: req.body.email, // Change to your recipient
             from: 'no-reply@royal-cleaning.co.uk', // Change to your verified sender
-            subject: `Thank you for contacting us`,
+            subject: `Contact request from ${req.body.name}`,
             text: 'Contact request received!',
-            html: `Thank you for contacting us with regards to ${req.body.refNum}. ${req.body.checkbox ? '<b>The client would rather receive communication over email only</b>' : ''}`,
+            html: `${req.body.name} has sent a request from ${req.url}. The client email is ${req.body.email} and his reference Number is ${req.body.refNum}`,
           }
           const company = {
             to: 'info@royal-cleaning.co.uk', // Change to your recipient
             from: 'no-reply@royal-cleaning.co.uk', // Change to your verified sender
-            subject: `New quote request [TEST]`,
+            subject: `Your request was received successfully!`,
             text: 'Contact request received!',
-            html: `This is a new quote request received from ${req.body.name} with reference number ${req.body.refNum}`,
-          } */
-       /* sgMail.send(client);
+            html: `Thank you for submitting your contact information ${req.body.name}. We'll be in touch shortly!`,
+          }
+       sgMail.send(client);
+       sgMail.send(company);
        const options = {
             "blocks": [
                 {
@@ -85,8 +86,7 @@ export default async function handler(req, res)
                 }
             ]
       };
-       */
-      axios.post('https://hooks.slack.com/services/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', JSON.stringify(options))
+      axios.post(process.env.SLACK_WEBHOOK, JSON.stringify(options))
       .then((response) => {
         console.log('SUCCEEDED: Sent slack webhook: \n', response.data);
         resolve(response.data);
