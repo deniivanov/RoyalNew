@@ -31,28 +31,28 @@ export const promoNumbers = [
 
 export const advantages = [
   {
-    icon: 'fas fa-rocket',
-    title: 'Brand awareness',
+    icon: 'fas fa-smile-beam',
+    title: 'Customer Service',
     subtitle:
-      'We bring over 2,500 journalists from the world’s leading publications to TheFront. They’re part of the reason why the event has a global reach of over three billion. We can also work with you on bespoke content packages that will tell your story on a global scale.',
+      'Fantastic customer service has always been one of the main goals of our business. Our aim has not changed throughout the years and has developed into a core value that is intertwined into the fabric of Royal Cleaning and each and everyone of the people involved in the business.',
   },
   {
-    icon: 'fas fa-brain',
-    title: 'Thought leadership',
+    icon: 'fas fa-shield-alt',
+    title: 'Insured and Checked',
     subtitle:
-      'Maybe you want to place your company front and centre of an industry issue. Maybe you’ve got a new product to launch. We can set up roundtables and workshops for you to host. You’ll be right in the middle of the action, leading discussions with targeted demographics on the topics that matter most to you.',
+      'All of our cleaners are insured and come with a liability insurance for up to 1 million pounds. The company is also heavily invested in making sure all of our cleaning technicians are properly vetted and background checked.',
   },
   {
     icon: 'far fa-comments',
-    title: 'Networking',
+    title: 'Great Communication',
     subtitle:
-      'We have dedicated stages for every industry. Whether you want to hire tech’s top talent, meet with the policymakers influencing your industry, or exchange notes with your peers and competitors, we have the stage, lounge, and evening event for you.',
+      'We know just how busy everyday life is and how important it is to do our very best to make life as easier as possible. This is why we have developed multiple different ways of communication with our clients such as email, livechat, phone and through our app',
   },
   {
-    icon: 'fas fa-bullhorn',
-    title: 'Lead generation',
+    icon: 'fas fa-pound-sign',
+    title: 'Cost effective',
     subtitle:
-      "70,000 people will be joining us at Web Summit this November. They're deeply embedded in the fabric of their respective industries – the trendsetters dictating how quickly new technologies are adopted.",
+      "Creating a cost effective, affordable cleaning service while maintaining the high quality that people expect when they pay for professional cleaning was no easy feat, but we believe that our company managed to create one of the more affordable cleaning businesses in the UK",
   },
 ];
 
@@ -252,11 +252,11 @@ export const teasers = [
       src: '/images/photos/expo-gallery/gallery1.jpg',
       srcSet: '/images/photos/expo-gallery/gallery1@2x.jpg 2x',
     },
-    title: 'The New Era of Tech Companies',
+    title: 'What can be expected from our end of tenancy cleaning',
     subtitle:
-      "Drawing thousands of the world's technology leaders together to learn and do business",
+      "Thorough cleaning like no other, guaranteed to get your deposit back",
     description:
-      'Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica.',
+      'Professional end of tenancy cleaning is a service that the ',
   },
   {
     image: {

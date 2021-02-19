@@ -9,24 +9,40 @@ export default async function handler(req, res)
 
 {
    /*  console.log(req) */
-    if (req.method === 'POST' && req.url === '/api/contact-us') {
-        console.log(req)
+    try {(req.method === 'POST' && req.url === '/api/contact-us'); {
+        console.log(req.body);
+        const newDate = new Date();
+        const selectedDate = new Date(req.body.selectedDate);
         const client = {
             to: req.body.email, // Change to your recipient
             from: 'no-reply@royal-cleaning.co.uk', // Change to your verified sender
-            subject: `Contact request from ${req.body.name}`,
+            templateId: 'd-e190aa1ea0274a139b1db3a3c4d8b673',
+            dynamic_template_data: {
+                name: req.body.name,
+                subject: `Thank you for contacting us ${req.body.name}!`
+            },
             text: 'Contact request received!',
-            html: `${req.body.name} has sent a request from ${req.url}. The client email is ${req.body.email} and his reference Number is ${req.body.refNum}`,
+            html: `${req.body.name} has sent a request from ${req.url}. The client email is ${req.body.email} and his reference Number is ${req.body.postcode}`,
           }
           const company = {
-            to: 'info@royal-cleaning.co.uk', // Change to your recipient
+            to: 'deni@royal-cleaning.co.uk', // Change to your recipient
             from: 'no-reply@royal-cleaning.co.uk', // Change to your verified sender
-            subject: `Your request was received successfully!`,
-            text: 'Contact request received!',
-            html: `Thank you for submitting your contact information ${req.body.name}. We'll be in touch shortly!`,
+            templateId: 'd-57c4676c39ce4262bf9b761567215148',
+            dynamic_template_data: {
+                subject: `Callback request from ${req.body.email} received!`,
+                name: req.body.name,
+                email: req.body.email,
+                mobile:req.body.mobile,
+                postcode:req.body.postcode,
+                service:req.body.service,
+                date: newDate.toLocaleString('en-GB'),
+                selectedDate: selectedDate.toLocaleString('en-GB'),
+                service: req.body.postcode,
+                
+            },
           }
-       sgMail.send(client);
-       sgMail.send(company);
+       await sgMail.send(client);
+       await sgMail.send(company);
        const options = {
             "blocks": [
                 {
@@ -62,7 +78,7 @@ export default async function handler(req, res)
                     "type": "section",
                     "text": {
                         "type": "mrkdwn",
-                        "text": `*Email:*\n${req.body.email}\n*Reference Number:*\n${req.body.refNum}\n*Received:*\n${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}\n`
+                        "text": `Mobile: ${req.body.mobile}\n*Email:*\n${req.body.email}\n*Service Required:*\n${req.body.service}\n*Postcode:*\n${req.body.postcode}\n*Date Selected: ${req.body.selectedDate}\n*Received:*\n${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}\n`
                     },
                     "accessory": {
                         "type": "image",
@@ -86,27 +102,18 @@ export default async function handler(req, res)
                 }
             ]
       };
-      axios.post(process.env.SLACK_WEBHOOK, JSON.stringify(options))
+      await axios.post('https://hooks.slack.com/services/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', JSON.stringify(options))
       .then((response) => {
         console.log('SUCCEEDED: Sent slack webhook: \n', response.data);
-        resolve(response.data);
       })
       .catch((error) => {
         console.log('FAILED: Send slack webhook', error);
-        reject(new Error('FAILED: Send slack webhook'));
-      });
-        /* sgMail.send(company) */
         res.status(200).json({body: 'Success Bro!'})
-        .then(() => {
-            console.log(res.statusCode)
-        })
-        .catch((error) => {
-        console.error(error)
-        res.status(202).json({body: 'Fail'})
-        })
-    }
-    else {
-        res.status(500).json({ body: 'Shit !' })
+      });
+      res.status(200).end()
+    }}
+    catch {
+        res.status(500).json({ body: 'Shit !' }).end()
         console.log('Shit')
     }
   }

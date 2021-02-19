@@ -252,7 +252,7 @@ const Topbar = props => {
           <a href="/" title="thefront">
             <Image
               className={classes.logoImage}
-              src="/images/logos/logo-royal.svg"
+              src="http://cdn.mcauto-images-production.sendgrid.net/62ec4b4714644024/3a19585f-ba0e-40c8-8dff-3724abb00849/1000x400.png"
               alt="thefront"
               lazy={false}
             />

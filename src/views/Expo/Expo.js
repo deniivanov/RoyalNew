@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { colors, Divider } from '@material-ui/core';
+import { colors, Divider, Box } from '@material-ui/core';
+import { LearnMoreLink } from 'components/atoms'
 import { Section, SectionAlternate } from 'components/organisms';
 import {
   About,
@@ -48,6 +49,16 @@ const Expo = () => {
       <SectionAlternate className={classes.sectionDescription}>
         <Description />
       </SectionAlternate>
+      <Section>
+      <Box display="flex" justifyContent="space-between" alignItems="center" padding={2} border="1px solid #ccc" borderRadius="4px">
+        <LearnMoreLink variant='body2' title='Overview'/>
+        <LearnMoreLink variant='body2' title='Local Team'/>
+        <LearnMoreLink variant='body2' title='Coverage'/>
+        <LearnMoreLink variant='body2' title='Pricing'/>
+        <LearnMoreLink variant='body2' title='Area Overview'/>
+        <LearnMoreLink variant='body2' title='Client Reviews'/>
+        </Box>
+      </Section>
       <Section>
         <PromoNumbers data={promoNumbers} />
       </Section>

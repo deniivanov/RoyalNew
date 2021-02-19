@@ -8,6 +8,7 @@ import {
   Grid,
   List,
   ListItem,
+  Link
 } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(12, 0),
     },
-    background: '#1b1642',
+    background: '#3cb481',
   },
   footerContainer: {
     maxWidth: 1100,
@@ -98,103 +99,24 @@ const Footer = props => {
 
   const landings = pages.landings;
   const supportedPages = pages.pages;
-  const account = pages.account;
 
   const socials = socialLinks;
-
-  const MenuGroup = props => {
-    const { item } = props;
-    return (
-      <List disablePadding className={classes.menuItem}>
-        <ListItem disableGutters className={classes.menuGroupItem}>
-          <Typography variant="body2" className={classes.menuGroupTitle}>
-            {item.groupTitle}
-          </Typography>
-        </ListItem>
-        {item.pages.map((page, i) => (
-          <ListItem disableGutters key={i} className={classes.menuGroupItem}>
-            <Typography
-              variant="body2"
-              component={'a'}
-              href={page.href}
-              className={clsx(classes.navLink, 'submenu-item')}
-            >
-              {page.title}
-            </Typography>
-          </ListItem>
-        ))}
-      </List>
-    );
-  };
-
-  const LandingPages = () => {
-    const { services, apps, web } = landings.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={services} />
-        </div>
-        <div>
-          <MenuGroup item={web} />
-        </div>
-      </div>
-    );
-  };
-
-  const SupportedPages = () => {
-    const {
-      career,
-      helpCenter,
-      company,
-      contact,
-      blog,
-      portfolio,
-    } = supportedPages.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={career} />
-          
-        </div>
-        <div>
-          <MenuGroup item={company} />
-        </div>
-        <div>
-          <MenuGroup item={blog} />
-        </div>
-      </div>
-    );
-  };
-
-  const AccountPages = () => {
-    const { settings, signup, signin, password, error } = account.children;
-    return (
-      <div className={classes.menu}>
-        <div>
-          <MenuGroup item={settings} />
-          <MenuGroup item={signup} />
-        </div>
-        <div>
-          <MenuGroup item={signin} />
-          <MenuGroup item={password} />
-          <MenuGroup item={error} />
-        </div>
-      </div>
-    );
-  };
+  const preventDefault = (event) => event.preventDefault();
 
   return (
     <div {...rest} className={clsx(classes.root, className)}>
       <div className={classes.footerContainer}>
         <Grid container spacing={4}>
-          <Grid item xs={12} md={2}>
+          <Grid container item xs={12} md={12} className={classes.menuListContainer}>
+            <Grid container spacing={0}>
+            <Grid item xs={6} md={3}>
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
                 <div className={classes.logoContainer}>
                   <a href="/" title="thefront">
                     <Image
                       className={classes.logoImage}
-                      src="/images/logos/logo-inverted.png"
+                      src="http://cdn.mcauto-images-production.sendgrid.net/62ec4b4714644024/4b5d3ca5-c02d-4c08-9549-0b4c1865d683/3917x1458.png"
                       alt="thefront"
                       lazy={false}
                     />
@@ -217,19 +139,130 @@ const Footer = props => {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={12} md={10} className={classes.menuListContainer}>
-            <Grid container spacing={0}>
-              <Grid item className={classes.listItem}>
-                <LandingPages />
-              </Grid>
-              <Grid item className={classes.listItem}>
-                <SupportedPages />
-              </Grid>
-              <Grid item className={classes.listItem}>
-                <AccountPages />
-              </Grid>
+              <Grid item xs={6} md={3} className={classes.listItem}>
+              <List>
+              <ListItem disableGutters className={classes.menuGroupTitle}>Services</ListItem>
+              <Typography><Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              href='https://royal-cleaning.co.uk/end-of-tenancy-cleaning'
+              >
+              End of tenancy cleaning
+              </Link>
+              </Typography>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              href='https://royal-cleaning.co.uk/carpet-cleaning'
+              >
+              Carpet cleaning
+              </Link>
+              </Typography>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >
+              After builders cleaning
+              </Link>
+              </Typography>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >
+              Oven cleaning
+              </Link>
+              </Typography>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >
+              Upholstery cleaning
+              </Link>
+              </Typography>
+              </List>
+            </Grid>
+            <Grid item xs={6} md={3} className={classes.listItem}>
+              <List>
+              <ListItem disableGutters className={classes.menuGroupTitle}>Contacts</ListItem>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >
+              Obla
+              </Link>
+              </Typography>
+              <Typography>
+              <Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              target="_blank"
+              href='https://google.com'
+              onClick={preventDefault}
+              >
+              Fanat
+              </Link>
+              </Typography>
+              </List>
+            </Grid>
+            <Grid item xs={6} md={3} className={classes.listItem}>
+              <List>
+              <ListItem disableGutters className={classes.menuGroupTitle}>Navigation</ListItem>
+              <Typography><Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >About us
+              </Link>
+              </Typography>
+              <Typography><Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >Terms and conditions
+              </Link>
+              </Typography>
+              <Typography><Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              >Privacy Policy
+              </Link>
+              </Typography>
+              <Typography><Link
+              className={classes.navLink}
+              component="a"
+              variant="body2"
+              underline='none'
+              href='https://google.com'
+              >FAQ
+              </Link>
+              </Typography>
+              </List>
             </Grid>
           </Grid>
+        </Grid>
         </Grid>
       </div>
     </div>

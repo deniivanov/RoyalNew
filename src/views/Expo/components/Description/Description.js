@@ -26,16 +26,12 @@ const Description = props => {
             variant="h4"
             className={clsx(classes.textWhite, classes.title)}
           >
-            Milan: the city of rising IT engineering
+            Royal Cleaning: A clean home is a better home
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h6" component="p" className={classes.textWhite}>
-            Milan is Italy's financial and industrial capital, as well one of
-            the world's leading cities of creative field. Having an important
-            business history and being the largest Italian industrial center,
-            Milan is definitely an attractive destination, with a big business
-            opportunities, for tech companies
+            Royal Cleaning is one of the leading cleaning companies in Oxfordshire and has been providing professional cleaning services in the area for the past 10 years. The business has established it's name as one of the leaders in the industry and is constantly improving for the benefit of our clients.
           </Typography>
         </Grid>
       </Grid>

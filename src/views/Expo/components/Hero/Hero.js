@@ -26,21 +26,23 @@ const Hero = props => {
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
-      <HeroBackground backgroundImg="/images/photos/expo-gallery/gallery3@2x.jpg">
+      <HeroBackground backgroundImg="https://royal-cleaning.co.uk/images/services/viewoflondon.jpg">
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Typography
-              variant="h3"
+              variant="h1"
               className={clsx(classes.textWhite, classes.title)}
             >
-              Join the world's leading companies at TheFront 2020
+              End of tenancy cleaning Oxford
+            </Typography>
+            <Typography
+            variant='h3'
+            className={clsx(classes.textWhite, classes.title)}
+            >
+              Guaranteed deposit back from your landlord
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="h5" className={classes.textWhite} gutterBottom>
-              Whether it’s Porsche, Stripe, Intercom, Amazon, or Google,
-              something about TheFront works for our global partners.
-            </Typography>
             <Typography variant="h5" className={classes.textWhite}>
               Want more information? Download our overview and a member of our
               specialist team will be in touch to talk about your goals for
@@ -48,8 +50,8 @@ const Hero = props => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Button size={isMd ? 'large' : 'medium'} variant="contained">
-              Download exhibitor overview
+            <Button size={isMd ? 'large' : 'medium'} variant="contained" color='secondary'>
+              Get a free quote
             </Button>
           </Grid>
         </Grid>

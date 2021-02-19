@@ -50,6 +50,7 @@
     "jarallax": "^1.12.1",
     "leaflet": "^1.6.0",
     "mongodb": "^3.6.3",
+    "mongoose": "^5.11.11",
     "next": "^10.0.1",
     "next-connect": "^0.9.1",
     "next-images": "^1.6.2",

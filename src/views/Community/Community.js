@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import {
+  useMediaQuery,
+  Grid,
   Typography,
+  TextField,
+  Button,
   Divider,
   IconButton
 } from '@material-ui/core';
@@ -10,7 +14,7 @@ import {SentimentVeryDissatisfied, SentimentDissatisfied, SentimentSatisfied, Se
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
-import { Hero, VeryUnhappy, Unhappy, Happy, VeryHappy, Form} from './components'
+import { Hero, VeryUnhappy, Unhappy, Happy, VeryHappy, Form, Features} from './components'
 
 
 const useStyles = makeStyles(theme => ({
@@ -98,7 +102,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ContactPageFeedback () {
+export default function Community () {
     const classes = useStyles();
 
     const [feedback, setFeedback] = useState(null)
@@ -121,39 +125,7 @@ export default function ContactPageFeedback () {
       return (
         <>
          <Hero/>
-         <Section>
-           <Typography className={classes.red} align='center' variant='h3'>Click to rate your experience</Typography>
-           <div align='center'>
-           {feedback ? replaceIcon() : <>
-           <IconButton 
-           className={classes.icons.veryunhappy}
-           onClick={() => setFeedback('veryUnhappy')}
-           >
-             <SentimentVeryDissatisfied style={{fill: "#fd2c1c", fontSize: 60}}/>
-           </IconButton>
-           <IconButton 
-           className={classes.icons}
-           onClick={() => setFeedback('unhappy')}
-           >
-             <SentimentDissatisfied style={{fill: "#fdb91c", fontSize: 60}}/>
-           </IconButton>
-           <IconButton
-           className={classes.icons}
-           onClick={() => setFeedback('happy')}
-           >
-             <SentimentSatisfied style={{fill: "#6eb094", fontSize: 60}}/>
-           </IconButton>
-           <IconButton
-           className={classes.icons}
-           onClick={() => setFeedback('veryHappy')}
-           >
-             <SentimentVerySatisfied style={{fill: "#40ba87", fontSize: 60}}/>
-           </IconButton>
-           </>}
-           </div>
-           {appendFeedback()}
-           <Divider flexItem />
-        </Section>
+         <Features/>
         </>
       );
     };
